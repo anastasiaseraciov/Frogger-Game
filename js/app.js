@@ -45,6 +45,30 @@ class Player extends Entity {
         super();
         this.sprite = 'images/char-boy.png';
     }
+
+    /**
+     * update player's x and y property according to keyboards events
+     * @param {string} input - Direction to travel
+     */
+    handleInput(input) {
+        switch (input) {
+            case 'left':
+                this.x = this.x > 0 ? this.x - 1 : this.x;
+                break;
+            case 'up':
+                this.y = this.y > 0 ? this.y - 1 : this.y;
+                break;
+            case 'right':
+                this.x = this.x < 4 ? this.x + 1 : this.x;
+                break;
+            case 'down':
+                this.y = this.y < 5 ? this.y + 1 : this.y;
+                break;
+            default:
+                break;
+
+        }
+    }
 }
 
 // Place the player object in a variable called player
