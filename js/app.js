@@ -19,7 +19,7 @@ class Entity {
             ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 83);
         }
 
-    checkCollisiions(playerOrEnemy) {
+    checkCollisions(playerOrEnemy) {
         if (this.y === playerOrEnemy.y) {
             if (this.x >= playerOrEnemy.x - 0.5 && this.x <= playerOrEnemy.x + 0.5) {
                 return true;
@@ -65,6 +65,22 @@ class Player extends Entity {
         this.y = 0; */
         super();
         this.sprite = 'images/char-boy.png';
+        this.moving = false;
+        this.win = false;
+    }
+
+    update(dt) {
+        super.update();
+        if (this.isOutofBoundsY && !this.moving && !this.win) {
+            alert(`You won!`);
+            this.win = true;
+        }
+    }
+
+    render() {
+        super.render();
+        this.moving = false;
+
     }
 
     /**
@@ -89,6 +105,7 @@ class Player extends Entity {
                 break;
 
         }
+        this.moving = true;
     }
 }
 
