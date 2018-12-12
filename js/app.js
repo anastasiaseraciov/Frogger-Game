@@ -5,6 +5,15 @@ class Entity {
         this.x = 2;
         this.y = 5;
     }
+
+    // You should multiply any movement by the dt parameter
+    // which will ensure the game runs at the same speed for
+    // all computers.
+    update(dt) {
+        this.isOutofBoundsX = this.x > 5;
+        this.isOutofBoundsY = this.y < 1;
+    }
+
     // Draw the images on the screen method with x and y coordinates
     render() {
             ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 83);
@@ -19,21 +28,23 @@ class Enemy extends Entity {
         this.x = x;
         this.y = y;
     }
+
+    // Update the enemy's position, required method for game
+    // Parameter: dt, a time delta between ticks
+    update(dt){
+        super.update();
+        if(this.isOutofBoundsX){
+            this.x = -1;
+        }
+        else {
+            this.x += dt;
+        }
+    }
 }
 
 // Place all enemy objects in an array called allEnemies
 // Enemies our player must avoid
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
-
 const allEnemies = [...Array(3)].map((_, i) => new Enemy(0, i + 1, 'Rock.png'));
-
-
-Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
-};
 
 // Now write your own player class
 // This class requires an update(), render() and
