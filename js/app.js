@@ -47,14 +47,25 @@ class Enemy extends Entity {
             this.x = -1;
         }
         else {
-            this.x += dt;
+            this.x = this.x + dt * 3; //Enemy speed
         }
     }
 }
 
 // Place all enemy objects in an array called allEnemies
 // Enemies our player must avoid
-const allEnemies = [...Array(3)].map((_, i) => new Enemy(0, i + 1, 'Rock.png'));
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
+const allEnemies = [];
+let bugOne = new Enemy(getRandomInt(0, 6), 1);
+let bugTwo = new Enemy(getRandomInt(0, 6), 2);
+let bugThree = new Enemy(getRandomInt(0, 6), 3);
+allEnemies.push(bugOne, bugTwo, bugThree);
+
+//[...Array(3)].map((_, i) => new Enemy(0, i + 1, 'Rock.png'));
+
 
 // Now write your own player class
 // This class requires an update(), render() and
