@@ -3,7 +3,7 @@ class Entity {
     constructor() {
         this.sprite = 'images/';
         this.x = 2;
-        this.y = 5;
+        this.y = 4.7;
     }
 
     // You should multiply any movement by the dt parameter
@@ -11,7 +11,7 @@ class Entity {
     // all computers.
     update(dt) {
         this.isOutofBoundsX = this.x > 5;
-        this.isOutofBoundsY = this.y < 1;
+        this.isOutofBoundsY = this.y < 0.7;
     }
 
     // Draw the images on the screen method with x and y coordinates
@@ -59,9 +59,9 @@ function getRandomInt(min, max) {
 }
 
 const allEnemies = [];
-let bugOne = new Enemy(getRandomInt(0, 6), 1);
-let bugTwo = new Enemy(getRandomInt(0, 6), 2);
-let bugThree = new Enemy(getRandomInt(0, 6), 3);
+let bugOne = new Enemy(getRandomInt(0, 6), 0.7);
+let bugTwo = new Enemy(getRandomInt(0, 6), 1.7);
+let bugThree = new Enemy(getRandomInt(0, 6), 2.7);
 allEnemies.push(bugOne, bugTwo, bugThree);
 
 //[...Array(3)].map((_, i) => new Enemy(0, i + 1, 'Rock.png'));
@@ -78,6 +78,7 @@ class Player extends Entity {
         this.sprite = 'images/char-boy.png';
         this.moving = false;
         this.win = false;
+        this.level = 1;
     }
 
     update(dt) {
@@ -104,13 +105,17 @@ class Player extends Entity {
                 this.x = this.x > 0 ? this.x - 1 : this.x;
                 break;
             case 'up':
-                this.y = this.y > 0 ? this.y - 1 : this.y;
+                /* Automatically on moving the player the y position was getting more decimals
+                In order the colission to occur had to round to one decimal */
+                this.y = this.y > 0 ? parseFloat((this.y - 1).toFixed(1)) : this.y;
                 break;
             case 'right':
                 this.x = this.x < 4 ? this.x + 1 : this.x;
                 break;
             case 'down':
-                this.y = this.y < 5 ? this.y + 1 : this.y;
+                /* Automatically on moving the player the y position was getting more decimals
+                In order the colission to occur had to round to one decimal */
+                this.y = this.y < 5 ? parseFloat((this.y + 1)).toFixed(1) : this.y;
                 break;
             default:
                 break;
