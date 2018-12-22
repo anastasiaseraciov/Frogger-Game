@@ -1,9 +1,22 @@
 # Classic Arcade Game Clone Project
 
-## Play Game
+## Run Game
+
+The game is based on keypress from keyboard, it can be easily accessed by any computer from the link below:
 
 https://anastasiaseraciov.github.io/Frogger-Game-Clone/
 
+It has no dependancies, written in pure HTML5, CSS and Javascript.
+
+## Play Game
+
+1. You have one Player and three enemies - bugs.
+2. On keypress "left" you move to the left, "right" to the right side, "up" to upright and "down" arrow to down.
+3. You need to cross the road where are bugs running without colliding with them.
+4. You win when you safely reach the water.
+5. On keypress "enter" you can restart the game.
+6. Good luck.
+ 
 ## Table of Contents
 
 - [Instructions](#instructions)
