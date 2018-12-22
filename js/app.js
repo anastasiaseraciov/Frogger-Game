@@ -16,8 +16,8 @@ class Entity {
 
     // Draw the images on the screen method with x and y coordinates
     render() {
-            ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 83);
-        }
+        ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 83);
+    }
 
     checkCollisions(playerOrEnemy) {
         if (this.y === playerOrEnemy.y) {
@@ -30,9 +30,9 @@ class Entity {
     }
 }
 
-    // Enemy class
+// Enemy class
 class Enemy extends Entity {
-    constructor(x, y){
+    constructor(x, y) {
         super();
         this.sprite += 'enemy-bug.png';
         this.x = x;
@@ -41,12 +41,11 @@ class Enemy extends Entity {
 
     // Update the enemy's position, required method for game
     // Parameter: dt, a time delta between ticks
-    update(dt){
+    update(dt) {
         super.update();
-        if(this.isOutofBoundsX){
+        if (this.isOutofBoundsX) {
             this.x = -1;
-        }
-        else {
+        } else {
             this.x = this.x + dt * 5; //Enemy speed
         }
     }
@@ -67,10 +66,7 @@ let bugTwo = new Enemy(getRandomInt(0, 6), 1.7);
 let bugThree = new Enemy(getRandomInt(0, 6), 2.7);
 allEnemies.push(bugOne, bugTwo, bugThree);
 
-//[...Array(3)].map((_, i) => new Enemy(0, i + 1, 'Rock.png'));
-
-
-// Now write your own player class
+// Player Class
 // This class requires an update(), render() and
 // a handleInput() method.
 class Player extends Entity {
@@ -129,17 +125,11 @@ class Player extends Entity {
 // Place the player object in a variable called player
 const player = new Player();
 
-
-
 // Now instantiate your objects.
-
-
-
-
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keyup', function (e) {
     var allowedKeys = {
         37: 'left',
         38: 'up',

@@ -55,6 +55,7 @@ var Engine = (function(global) {
 
         /* Use the browser's requestAnimationFrame function to call this
          * function again as soon as the browser is able to draw another frame.
+         Draw win Modal
          */
         if (player.win === true) {
             win.cancelAnimationFrame(id);
@@ -189,8 +190,7 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        // noop
-
+        // Reset game on keypress enter
         document.addEventListener("keypress", function (e) {
             if (e.keyCode === 13) {
                 player.win = false;
