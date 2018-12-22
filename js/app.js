@@ -47,10 +47,13 @@ class Enemy extends Entity {
             this.x = -1;
         }
         else {
-            this.x = this.x + dt * 3; //Enemy speed
+            this.x = this.x + dt * 5; //Enemy speed
         }
     }
+
 }
+
+const enemy = new Enemy();
 
 // Place all enemy objects in an array called allEnemies
 // Enemies our player must avoid
@@ -77,14 +80,13 @@ class Player extends Entity {
         super();
         this.sprite = 'images/char-boy.png';
         this.moving = false;
-        this.win = false;
+        this.win = false; //Set to true when player reaches the water
         this.level = 1;
     }
 
     update(dt) {
         super.update();
         if (this.isOutofBoundsY && !this.moving && !this.win) {
-            alert(`You won!`);
             this.win = true;
         }
     }
@@ -92,7 +94,6 @@ class Player extends Entity {
     render() {
         super.render();
         this.moving = false;
-
     }
 
     /**

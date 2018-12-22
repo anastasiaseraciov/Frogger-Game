@@ -58,11 +58,25 @@ var Engine = (function(global) {
          */
         if (player.win === true) {
             win.cancelAnimationFrame(id);
+            setTimeout(function () {
+                player.gameOver = true;
+                ctx.font = '23pt Arial';
+                ctx.globalAlpha = 0.65;
+                ctx.fillStyle = 'black';
+                ctx.fillRect(78, 200, 350, 200);
+                ctx.globalAlpha = 1;
+                ctx.fillStyle = 'yellow';
+                ctx.fillText('YOU WON!', 160, 285);
+                ctx.font = '18pt Arial';
+                ctx.fillStyle = 'white';
+                ctx.fillText('Press Enter to Play Again', 117, 350);
+            }, 50);
         } else {
             id = win.requestAnimationFrame(main);
         }
     }
 
+    
     /* This function does some initial setup that should only occur once,
      * particularly setting the lastTime variable that is required for the
      * game loop.
@@ -176,6 +190,18 @@ var Engine = (function(global) {
      */
     function reset() {
         // noop
+
+        document.addEventListener("keypress", function (e) {
+            if (e.keyCode === 13) {
+                player.win = false;
+                player.x = 2;
+                player.y = 4.7;
+                allEnemies.forEach(enemy => {
+                    enemy.x = getRandomInt(0, 6);
+                });
+                win.requestAnimationFrame(main);
+            }
+        });
     }
 
     /* Go ahead and load all of the images we know we're going to need to
