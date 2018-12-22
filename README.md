@@ -1,5 +1,9 @@
 # Classic Arcade Game Clone Project
 
+## Play Game
+
+https://anastasiaseraciov.github.io/Frogger-Game-Clone/
+
 ## Table of Contents
 
 - [Instructions](#instructions)
